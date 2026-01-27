@@ -1,14 +1,22 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthRoleModal } from './AuthRoleModal';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
+
+  const openAuthModal = (mode: 'login' | 'signup') => {
+    setAuthMode(mode);
+    setAuthModalOpen(true);
+  };
 
   const navLinks = [
-    { name: 'For Customers', href: '#customers' },
-    { name: 'For Vendors', href: '#vendors' },
-    { name: 'For Providers', href: '#providers' },
-    { name: 'How It Works', href: '#how' },
+    { name: 'For Customers', href: '/customer' },
+    { name: 'For Vendors', href: '/vendor' },
+    { name: 'For Providers', href: '/provider' },
   ];
 
   return (
@@ -17,32 +25,38 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gray-900">
+            <Link to="/" className="text-2xl font-bold text-gray-900">
               <span className="text-emerald-500">Errand</span>Sort
-            </h1>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="flex items-center space-x-8">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   className="text-gray-700 transition-colors hover:text-emerald-500"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-700 transition-colors hover:text-emerald-500">
+            <button
+              onClick={() => openAuthModal('login')}
+              className="text-gray-700 transition-colors hover:text-emerald-500"
+            >
               Sign In
             </button>
-            <button className="rounded-lg bg-emerald-500 px-6 py-2 font-semibold text-white transition-colors hover:bg-emerald-600">
+            <button
+              onClick={() => openAuthModal('signup')}
+              className="rounded-lg bg-emerald-500 px-6 py-2 font-semibold text-white transition-colors hover:bg-emerald-600"
+            >
               Get Started
             </button>
           </div>
@@ -66,26 +80,43 @@ export function Navbar() {
         <div className="border-t border-gray-100 md:hidden">
           <div className="space-y-1 px-4 pb-3 pt-2">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="block rounded-lg px-3 py-2 text-gray-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <div className="space-y-2 pt-4">
-              <button className="w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-700 transition-colors hover:bg-gray-50">
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  openAuthModal('login');
+                }}
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-700 transition-colors hover:bg-gray-50"
+              >
                 Sign In
               </button>
-              <button className="w-full rounded-lg bg-emerald-500 px-3 py-2 font-semibold text-white transition-colors hover:bg-emerald-600">
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  openAuthModal('signup');
+                }}
+                className="w-full rounded-lg bg-emerald-500 px-3 py-2 font-semibold text-white transition-colors hover:bg-emerald-600"
+              >
                 Get Started
               </button>
             </div>
           </div>
         </div>
       )}
+      <AuthRoleModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        mode={authMode}
+      />
     </nav>
   );
 }

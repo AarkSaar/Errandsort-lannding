@@ -1,23 +1,20 @@
-import { Navbar } from '@/app/components/Navbar';
-import { Hero } from '@/app/components/Hero';
-import { Features } from '@/app/components/Features';
-import { UserGroups } from '@/app/components/UserGroups';
-import { HowItWorks } from '@/app/components/HowItWorks';
-import { AppShowcase } from '@/app/components/AppShowcase';
-import { Testimonials } from '@/app/components/Testimonials';
-import { Footer } from '@/app/components/Footer';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { VendorLanding } from './pages/VendorLanding';
+import { CustomerLanding } from './pages/CustomerLanding';
+import { ProviderLanding } from './pages/ProviderLanding';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { CookiePolicy } from './pages/CookiePolicy';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero />
-      <Features />
-      <UserGroups />
-      <HowItWorks />
-      <AppShowcase />
-      <Testimonials />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/vendor" element={<VendorLanding />} />
+      <Route path="/customer" element={<CustomerLanding />} />
+      <Route path="/provider" element={<ProviderLanding />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/cookies" element={<CookiePolicy />} />
+    </Routes>
   );
 }
