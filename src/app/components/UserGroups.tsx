@@ -1,5 +1,8 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { ArrowRight } from 'lucide-react';
+import customerImage from '@/assets/images/customer-lifestyle.png';
+import vendorImage from '@/assets/images/vendor-kitchen.png';
+import courierImage from '@/assets/images/courier-rider.png';
 
 export function UserGroups() {
   const userGroups = [
@@ -7,7 +10,7 @@ export function UserGroups() {
       title: 'For Customers',
       subtitle: 'Shop smarter',
       description: 'Browse thousands of products, track deliveries in real-time, and enjoy exclusive deals from local vendors.',
-      image: 'https://images.unsplash.com/photo-1753161022993-d197628688d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGN1c3RvbWVyJTIwc2hvcHBpbmclMjBtb2JpbGUlMjBwaG9uZXxlbnwxfHx8fDE3Njk0MTA2OTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: customerImage,
       benefits: ['24/7 shopping', 'Fast delivery', 'Secure payments', 'Order tracking'],
       bgColor: 'from-cyan-50 to-blue-50',
       accentColor: 'text-cyan-600',
@@ -16,7 +19,7 @@ export function UserGroups() {
       title: 'For Vendors',
       subtitle: 'Grow your business',
       description: 'Reach more customers, manage inventory effortlessly, and boost sales with our powerful vendor dashboard.',
-      image: 'https://images.unsplash.com/photo-1531540823824-7d09de6461c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFsbCUyMGJ1c2luZXNzJTIwb3duZXIlMjBzdG9yZXxlbnwxfHx8fDE3Njk0MTA2OTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: vendorImage,
       benefits: ['Easy setup', 'Analytics dashboard', 'Payment processing', 'Marketing tools'],
       bgColor: 'from-orange-50 to-amber-50',
       accentColor: 'text-orange-600',
@@ -25,7 +28,7 @@ export function UserGroups() {
       title: 'For Service Providers',
       subtitle: 'Earn on your terms',
       description: 'Set your own schedule, choose your deliveries, and maximize your earnings with flexible work opportunities.',
-      image: 'https://images.unsplash.com/photo-1646920912229-bc0d5d94e68b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZWxpdmVyeSUyMHNlcnZpY2UlMjBwcm92aWRlcnxlbnwxfHx8fDE3Njk0MTA2OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: courierImage,
       benefits: ['Flexible hours', 'Instant payouts', 'Route optimization', 'Support 24/7'],
       bgColor: 'from-emerald-50 to-green-50',
       accentColor: 'text-emerald-600',
@@ -48,9 +51,8 @@ export function UserGroups() {
           {userGroups.map((group, index) => (
             <div
               key={index}
-              className={`grid items-center gap-12 lg:grid-cols-2 ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
+              className={`grid items-center gap-12 lg:grid-cols-2 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                }`}
             >
               {/* Content */}
               <div className={`${index % 2 === 1 ? 'lg:order-2' : ''} space-y-6`}>
@@ -62,9 +64,9 @@ export function UserGroups() {
                     {group.title}
                   </h3>
                 </div>
-                
+
                 <p className="text-lg text-gray-600">{group.description}</p>
-                
+
                 <ul className="space-y-3">
                   {group.benefits.map((benefit, i) => (
                     <li key={i} className="flex items-center gap-3">
@@ -75,13 +77,13 @@ export function UserGroups() {
                     </li>
                   ))}
                 </ul>
-                
+
                 <button className={`group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3 font-semibold text-white transition-all hover:bg-gray-800`}>
                   Learn More
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
-              
+
               {/* Image */}
               <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                 <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${group.bgColor} p-1`}>

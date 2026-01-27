@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react';
+import avatarSarah from '@/assets/images/avatar-sarah.png';
 
 export function Testimonials() {
   const testimonials = [
@@ -7,7 +8,7 @@ export function Testimonials() {
       role: 'Customer',
       content: 'ErrandSort has completely changed how I shop. Fast delivery, great prices, and amazing customer service!',
       rating: 5,
-      avatar: '👩',
+      avatar: avatarSarah,
     },
     {
       name: 'Michael Chen',
@@ -49,14 +50,20 @@ export function Testimonials() {
                   <Star key={i} className="h-5 w-5 fill-orange-400 text-orange-400" />
                 ))}
               </div>
-              
+
               {/* Content */}
               <p className="mb-6 text-gray-700">{testimonial.content}</p>
-              
+
               {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-2xl">
-                  {testimonial.avatar}
+                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full bg-emerald-100">
+                  {typeof testimonial.avatar === 'string' && (testimonial.avatar.startsWith('/') || testimonial.avatar.startsWith('http')) ? (
+                    <img src={testimonial.avatar} alt={testimonial.name} className="h-full w-full object-cover" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-2xl">
+                      {testimonial.avatar}
+                    </div>
+                  )}
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">{testimonial.name}</div>

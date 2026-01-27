@@ -1,4 +1,5 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import appMockup from '@/assets/images/app-showcase-mockup.png';
 import { Apple, Smartphone } from 'lucide-react';
 
 export function AppShowcase() {
@@ -9,20 +10,20 @@ export function AppShowcase() {
         <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-white blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-white blur-3xl" />
       </div>
-      
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* App Image */}
           <div className="relative">
             <div className="relative mx-auto max-w-sm">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1569484221992-2a453658fff3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBtb2NrdXAlMjBzaG9wcGluZ3xlbnwxfHx8fDE3Njk0MTA2OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                src={appMockup}
                 alt="errandfront mobile app"
                 className="relative z-10 w-full drop-shadow-2xl"
               />
             </div>
           </div>
-          
+
           {/* Content */}
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
@@ -33,7 +34,7 @@ export function AppShowcase() {
                 Available on iOS and Android. Start shopping, selling, or delivering in minutes.
               </p>
             </div>
-            
+
             {/* Download Buttons */}
             <div className="flex flex-col gap-4 sm:flex-row lg:justify-start">
               <button className="inline-flex items-center justify-center gap-3 rounded-xl bg-black px-6 py-4 text-white transition-transform hover:scale-105 hover:bg-gray-900">
@@ -43,7 +44,7 @@ export function AppShowcase() {
                   <div className="text-base font-semibold">App Store</div>
                 </div>
               </button>
-              
+
               <button className="inline-flex items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 text-black transition-transform hover:scale-105 hover:bg-gray-100">
                 <Smartphone className="h-6 w-6" />
                 <div className="text-left">
@@ -52,7 +53,7 @@ export function AppShowcase() {
                 </div>
               </button>
             </div>
-            
+
             {/* Rating */}
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center lg:justify-start">
               <div className="flex items-center justify-center gap-1 lg:justify-start">
